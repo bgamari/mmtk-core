@@ -112,7 +112,8 @@ impl SideMetadataSpec {
     /// Used only for debugging.
     /// This panics if the required metadata is not mapped
     #[cfg(debug_assertions)]
-    #[allow(dead_code)]
+    #[allow(unused_variables)]
+    #[allow(unreachable_code)]
     pub(crate) fn assert_metadata_mapped(&self, data_addr: Address) {
         return;
         let meta_start = address_to_meta_address(self, data_addr).align_down(BYTES_IN_PAGE);
