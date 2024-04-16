@@ -191,6 +191,11 @@ impl<VM: VMBinding> CopySpace<VM> {
                 side_forwarding_status_table.bzero_metadata(start, size);
             }
 
+            #[cfg(feature = "immix_zero_on_release")]
+            for (start, size) in self.pr.iterate_allocated_regions() {
+                crate::util::memory::zero(start, size);
+            }
+
             // Clear VO bits because all objects in the space are dead.
             #[cfg(feature = "vo_bit")]
             crate::util::metadata::vo_bit::bzero_vo_bit(start, size);
