@@ -21,6 +21,8 @@ pub(crate) mod object_model;
 mod reference_glue;
 mod scanning;
 pub mod slot;
+use crate::util::ObjectReference;
+
 pub use self::active_plan::ActivePlan;
 pub use self::collection::Collection;
 pub use self::collection::GCThreadContext;
@@ -79,4 +81,6 @@ where
     /// Note that MMTk does not attempt to do anything to align the cursor to this value, but
     /// it merely asserts with this constant.
     const ALLOC_END_ALIGNMENT: usize = 1;
+
+    fn remembered_set_flush(vec: &Vec<ObjectReference>);
 }
