@@ -49,6 +49,9 @@ pub(crate) mod epilogue;
 pub(crate) mod erase_vm;
 /// Finalization implementation.
 pub(crate) mod finalizable_processor;
+/// Debugging tool for heap dump.
+#[cfg(feature = "heap_dump_dot")]
+pub mod heap_dump_dot;
 /// Logger initialization
 pub(crate) mod logger;
 /// Forwarding word in object copying.
